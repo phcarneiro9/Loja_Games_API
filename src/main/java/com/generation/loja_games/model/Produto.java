@@ -14,11 +14,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-
 @Entity
 @Table(name = "tb_produtos")
 public class Produto {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,18 +28,13 @@ public class Produto {
     private String nome;
 
 
-    @NotBlank(message = "A descrição é obrigatória!")
-    @Size(min = 5, max = 255)
-    private String descricao;
-
-
     @NotNull(message = "O preço é obrigatório!")
     @DecimalMin(value = "0.0")
     private Double preco;
 
 
-    @NotNull(message = "A quantidade é obrigatória!")
-    private Integer quantidade;
+    // Link da imagem hospedada no ImageKit
+    private String foto;
 
 
     @ManyToOne
@@ -50,6 +43,8 @@ public class Produto {
     private Categoria categoria;
 
 
+
+    // Getters e Setters
 
     public Long getId() {
         return id;
@@ -71,16 +66,6 @@ public class Produto {
     }
 
 
-    public String getDescricao() {
-        return descricao;
-    }
-
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-
     public Double getPreco() {
         return preco;
     }
@@ -91,13 +76,13 @@ public class Produto {
     }
 
 
-    public Integer getQuantidade() {
-        return quantidade;
+    public String getFoto() {
+        return foto;
     }
 
 
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
 
