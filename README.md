@@ -82,7 +82,7 @@ MySQL
 Nome do banco:
 
 ```
-db_lojagames
+db_loja_games
 ```
 
 Configuração realizada no arquivo:
