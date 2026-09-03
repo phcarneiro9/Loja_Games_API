@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.crypto.SecretKey;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Claims;
@@ -14,25 +15,18 @@ import io.jsonwebtoken.security.Keys;
 @Service
 public class JwtService {
 
-    private static final String CHAVE_SECRETA =
-            "loja-games-chave-jwt-segura-com-mais-de-32-caracteres";
+    @Value("${jwt.secret}")
+    private String chaveSecreta;
 
     private static final long TEMPO_EXPIRACAO = 60 * 60 * 1000;
 
     private SecretKey getChave() {
-
-        return Keys.hmacShaKeyFor(
-                CHAVE_SECRETA.getBytes(StandardCharsets.UTF_8)
-        );
+        return Keys.hmacShaKeyFor(chaveSecreta.getBytes(StandardCharsets.UTF_8));
     }
 
     public String gerarToken(String email) {
-
         Date agora = new Date();
-
-        Date expiracao = new Date(
-                agora.getTime() + TEMPO_EXPIRACAO
-        );
+        Date expiracao = new Date(agora.getTime() + TEMPO_EXPIRACAO);
 
         return Jwts.builder()
                 .subject(email)
@@ -43,27 +37,19 @@ public class JwtService {
     }
 
     public String extrairEmail(String token) {
-
         return extrairClaims(token).getSubject();
     }
 
     public boolean tokenValido(String token, String email) {
-
         String emailToken = extrairEmail(token);
-
-        return emailToken.equals(email)
-                && !tokenExpirado(token);
+        return emailToken.equals(email) && !tokenExpirado(token);
     }
 
     private boolean tokenExpirado(String token) {
-
-        return extrairClaims(token)
-                .getExpiration()
-                .before(new Date());
+        return extrairClaims(token).getExpiration().before(new Date());
     }
 
     private Claims extrairClaims(String token) {
-
         return Jwts.parser()
                 .verifyWith(getChave())
                 .build()
