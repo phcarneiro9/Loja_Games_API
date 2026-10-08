@@ -81,3 +81,5 @@ Projeto desenvolvido para praticar **APIs REST, CRUD, persistência de dados e r
 **Patrick Carneiro**
 
 [GitHub](https://github.com/phcarneiro9)
+
+<!-- README refresh -->
