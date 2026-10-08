@@ -1,187 +1,83 @@
 # 🎮 Loja Games API
 
-<p align="center">
-  Backend desenvolvido em <strong>Java 17 + Spring Boot</strong> para gerenciamento de produtos e categorias de uma loja de games.
-</p>
+Backend REST desenvolvido com **Java 17 e Spring Boot** para gerenciamento de produtos e categorias de uma loja de games.
 
----
+## 🚀 Funcionalidades
 
-## 🚀 Tecnologias utilizadas
+### 📂 Categorias
+- Criar, listar, buscar, atualizar e excluir categorias
+- Buscar categoria por tipo
 
-- ☕ Java 17
-- 🌱 Spring Boot
-- 💾 MySQL
-- 🔗 Spring Data JPA
-- 🌐 API REST
-- 🔍 Insomnia
-- 🐙 Git e GitHub
+### 🎮 Produtos
+- Criar, listar, buscar, atualizar e excluir produtos
+- Buscar produto por nome
 
----
+## 🧩 Relacionamento
 
-## 📌 Sobre o projeto
-
-A **Loja Games API** é uma aplicação backend desenvolvida para gerenciar produtos de uma loja de games.
-
-O sistema permite realizar operações de cadastro, consulta, atualização e exclusão de produtos e categorias através de uma API REST.
-
-A aplicação utiliza o relacionamento **OneToMany** entre Categoria e Produto.
-
----
-
-## 🎯 Funcionalidades
-
-### 📂 Categoria
-
-- ✅ Criar categoria
-- ✅ Listar categorias
-- ✅ Buscar categoria por ID
-- ✅ Buscar categoria por tipo
-- ✅ Atualizar categoria
-- ✅ Deletar categoria
-
-### 🎮 Produto
-
-- ✅ Criar produto
-- ✅ Listar produtos
-- ✅ Buscar produto por ID
-- ✅ Buscar produto por nome
-- ✅ Atualizar produto
-- ✅ Deletar produto
-
----
-
-## 🔗 Relacionamento entre entidades
-
-A aplicação possui o relacionamento:
-
-```
-Categoria (1) -------- (N) Produto
+```text
+Categoria 1 ──── N Produto
 ```
 
-Uma categoria pode possuir vários produtos cadastrados.
+## 🛠️ Tecnologias
 
-Exemplo:
+- Java 17
+- Spring Boot
+- Spring Data JPA
+- Hibernate
+- MySQL
+- API REST
+- Maven
+- Insomnia
 
-```
-Console
- ├── Playstation 5
- ├── Xbox Series X
- └── Nintendo Switch
-```
+## 💾 Banco de Dados
 
----
-
-## 💾 Configuração do Banco de Dados
-
-Banco utilizado:
-
-```
-MySQL
-```
+Banco utilizado: **MySQL**
 
 Nome do banco:
 
-```
+```text
 db_loja_games
 ```
 
-Configuração realizada no arquivo:
+Configure as credenciais no arquivo `application.properties`.
 
-```
-application.properties
-```
-
----
-
-## ▶️ Como executar o projeto
-
-### 1. Clone o repositório
+## ▶️ Como executar
 
 ```bash
-git clone: https://github.com/phcarneiro9/Loja_Games_API
+git clone https://github.com/phcarneiro9/Loja_Games_API.git
+cd Loja_Games_API
 ```
 
-### 2. Configure o banco de dados
+Configure o banco de dados e execute a aplicação pela IDE ou com Maven.
 
-Altere as informações no arquivo:
+A API será disponibilizada em:
 
-```
-src/main/resources/application.properties
-```
-
-### 3. Execute a aplicação
-
-A API estará disponível em:
-
-```
+```text
 http://localhost:8080
 ```
 
----
-
-## 🔗 Endpoints da API
-
-### 🎮 Produtos
+## 🔗 Endpoints principais
 
 | Método | Endpoint | Descrição |
 |---|---|---|
-| GET | `/produtos` | Listar todos os produtos |
+| GET | `/produtos` | Listar produtos |
 | POST | `/produtos` | Criar produto |
-| GET | `/produtos/{id}` | Buscar produto por ID |
-| GET | `/produtos/nome/{nome}` | Buscar produto por nome |
+| GET | `/produtos/{id}` | Buscar produto |
+| GET | `/produtos/nome/{nome}` | Buscar por nome |
 | PUT | `/produtos` | Atualizar produto |
-| DELETE | `/produtos/{id}` | Deletar produto |
-
----
-
-### 📂 Categorias
-
-| Método | Endpoint | Descrição |
-|---|---|---|
+| DELETE | `/produtos/{id}` | Excluir produto |
 | GET | `/categorias` | Listar categorias |
 | POST | `/categorias` | Criar categoria |
-| GET | `/categorias/{id}` | Buscar categoria por ID |
-| GET | `/categorias/tipo/{tipo}` | Buscar categoria por tipo |
+| GET | `/categorias/{id}` | Buscar categoria |
 | PUT | `/categorias` | Atualizar categoria |
-| DELETE | `/categorias/{id}` | Deletar categoria |
+| DELETE | `/categorias/{id}` | Excluir categoria |
 
----
+## 🎯 Objetivo
 
-## 📁 Estrutura do Projeto
+Projeto desenvolvido para praticar **APIs REST, CRUD, persistência de dados e relacionamentos entre entidades** com Spring Boot.
 
-```
-src/main/java
-
-└── com.generation.lojagames
-
-    ├── controller
-    │   ├── ProdutoController.java
-    │   └── CategoriaController.java
-    │
-    ├── model
-    │   ├── Produto.java
-    │   └── Categoria.java
-    │
-    ├── repository
-    │   ├── ProdutoRepository.java
-    │   └── CategoriaRepository.java
-    │
-    └── LojaGamesApplication.java
-```
-
----
-
-## 🔧 Ferramentas utilizadas
-
-- Spring Tool Suite (STS)
-- MySQL Workbench
-- Insomnia
-- GitHub
-
----
-
-## 👨‍💻 Desenvolvedor
+## 👨‍💻 Autor
 
 **Patrick Carneiro**
 
-Projeto desenvolvido para prática de desenvolvimento Backend utilizando **Java e Spring Boot**.
+[GitHub](https://github.com/phcarneiro9)
